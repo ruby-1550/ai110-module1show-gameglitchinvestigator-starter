@@ -25,13 +25,19 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- The game is a Streamlit number guesser where you try to find a secret number within a limited number of attempts and receive higher/lower hints.
+- Bugs found: Normal mode had no winnable answer, Easy mode hints pushed above the described max, New Game could lock input, and Show hint didn’t toggle off.
+- Fixes applied: moved core logic into `logic_utils.py`, corrected the hint direction logic, and added targeted pytest coverage for the hint messages.
+- If you completed Challenge 1, add a screenshot of your passing pytest run below.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- Screenshot of a winning run:
+![Winning run](Project_1.png)
+
+### ✅ Pytest Results (Challenge 1)
+![Pytest results](Project_1_Tests.png)
+
 
 ## 🚀 Stretch Features
 

@@ -31,13 +31,16 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 4. What did you learn about Streamlit and state?
 
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+- Streamlit reruns your script from top to bottom on every interaction, so any non‑state variables reset unless you store them.
+- Session state is like a small memory dictionary that survives those reruns, which is how values like the secret number persist.
+- If you don’t put game data into `st.session_state`, it will look like the app is “forgetting” or changing things randomly.
+- I would explain it as “Streamlit refreshes the page logic every click, and session state is the safe place for anything you want to keep.”
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+- I want to keep the habit of writing a focused test right after each fix, because it made it easy to confirm the bug was truly resolved.
+- Next time, I will challenge AI suggestions sooner by checking the actual code paths before I assume the diagnosis is correct.
+- This project reminded me that AI can be very helpful for brainstorming and refactoring, but it can still miss the real root cause without careful validation.
+- I now treat AI output as a starting point that I must verify with tests and manual runs.
