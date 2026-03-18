@@ -4,26 +4,28 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+- Bug 1: On Normal, there was no correct answer even after trying all possibilities. I expected one of the guesses in the Normal range to eventually win, but none of the numbers I tried ever produced a correct result.
+- Bug 2: On Easy, the hint told me to guess higher than the maximum described value (100). I expected hints to stay within the stated range, but it told me to go above 100 even though the description capped the range at 100.
+- Bug 3: The New Game button didn’t work as expected and blocked guessing. I expected it to reset the game and let me keep playing, but after pressing it I couldn’t enter guesses in any game.
+- Bug 4: The Show hint toggle didn’t appear to work. I expected hints to appear when toggled.
 
 ---
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+- I used ChatGPT and Copilot in VS Code, using `#file:app.py` and `#file:logic_utils.py` so the AI could see how the UI and logic connect.
+- Correct suggestion: The AI suggested that the “Too High/Too Low” hints were reversed in the comparison logic. That was correct. I verified it by updating `check_guess` and running `python3 -m pytest -q`, which passed and showed the hint message matched the expected direction.
+- Incorrect/misleading suggestion: The AI suggested that the “Normal mode has no correct answer” bug was caused by the difficulty range alone, but the code review showed the range was fine and the issue was likely elsewhere. I verified this by checking `get_range_for_difficulty` and then running the game to see that the range displayed correctly even though the glitch still appeared.
+- Step 3: Ask AI for Help. I opened Copilot, highlighted the Normal-difficulty logic, and used Inline Chat to ask: “Explain this logic step-by-step. On Normal, there was no correct answer even after trying all possibilities—what in the code could cause that?”
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+- I decided a bug was fixed only after the behavior matched the expected hint and the tests passed.
+- I ran `python3 -m pytest -q` and saw all tests pass, including a new test asserting that a guess of 60 vs a secret of 50 returns “Too High” with the “Go LOWER!” hint.
+- I also launched the app with Streamlit and manually checked that the hint text now aligned with the guess direction.
+- AI helped by suggesting a focused test case that checks both the outcome and the hint message.
 
 ---
 
